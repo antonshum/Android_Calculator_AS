@@ -89,22 +89,18 @@ public class MainActivity extends Activity {
 			else if(((Button)V).getText().toString().equals("+")) {
 				lastString = "+";
 				string = tv.getText().toString();
-//				tv.setText("0");
 			}
 			else if(((Button)V).getText().toString().equals("-")) {
 				lastString = "-";
 				string = tv.getText().toString();
-//				tv.setText("0");
 			}
 			else if(((Button)V).getText().toString().equals("*")) {
 				lastString = "*";
 				string = tv.getText().toString();
-//				tv.setText("0");
 			}
 			else if(((Button)V).getText().toString().equals("/")) {
 				lastString = "/";
 				string = tv.getText().toString();
-//				tv.setText("0");
 			}
 			else if(((Button)V).getText().toString().equals("=")) {
 				if(calString.equals("+")) {
