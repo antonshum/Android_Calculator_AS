@@ -28,6 +28,7 @@ public class MainActivity extends Activity {
 	private TextView tv = null;
 	String string;
 	String lastString = null;
+	String calString = null;
 	int temp;
 	float ftemp;
 	@Override
@@ -88,40 +89,44 @@ public class MainActivity extends Activity {
 			else if(((Button)V).getText().toString().equals("+")) {
 				lastString = "+";
 				string = tv.getText().toString();
-				tv.setText("0");
+//				tv.setText("0");
 			}
 			else if(((Button)V).getText().toString().equals("-")) {
 				lastString = "-";
 				string = tv.getText().toString();
-				tv.setText("0");
+//				tv.setText("0");
 			}
 			else if(((Button)V).getText().toString().equals("*")) {
 				lastString = "*";
 				string = tv.getText().toString();
-				tv.setText("0");
+//				tv.setText("0");
 			}
 			else if(((Button)V).getText().toString().equals("/")) {
 				lastString = "/";
 				string = tv.getText().toString();
-				tv.setText("0");
+//				tv.setText("0");
 			}
 			else if(((Button)V).getText().toString().equals("=")) {
-				if(lastString.equals("+")) {
+				if(calString.equals("+")) {
+					calString = null;
 					temp = Integer.parseInt(string) + Integer.parseInt(tv.getText().toString());
 					string = string.valueOf(temp);
 					tv.setText(string);
 				}
-				else if(lastString.equals("-"))	{
+				else if(calString.equals("-"))	{
+					calString = null;
 					temp = Integer.parseInt(string) - Integer.parseInt(tv.getText().toString());
 					string = string.valueOf(temp);
 					tv.setText(string);
 				}
-				else if(lastString.equals("*"))	{
+				else if(calString.equals("*"))	{
+					calString = null;
 					temp = Integer.parseInt(string) * Integer.parseInt(tv.getText().toString());
 					string = string.valueOf(temp);
 					tv.setText(string);
 				}
-				else if(lastString.equals("/"))	{
+				else if(calString.equals("/"))	{
+					calString = null;
 					ftemp = (float)(Integer.parseInt(string)) / Integer.parseInt(tv.getText().toString());
 					string = string.valueOf(ftemp);
 					tv.setText(string);
@@ -131,11 +136,18 @@ public class MainActivity extends Activity {
 				}
 			}
 			else {
-				if(Integer.parseInt(tv.getText().toString())==0) {
-					tv.setText(((Button)V).getText().toString());
+				if(lastString != null) {			//has enterded +-*/
+					calString = lastString;
+					lastString = null;
+						tv.setText(((Button)V).getText().toString());
 				}
 				else {
-					tv.setText(tv.getText().toString() + ((Button)V).getText().toString());
+					if(Integer.parseInt(tv.getText().toString())==0) {
+						tv.setText(((Button)V).getText().toString());
+					}
+					else {
+						tv.setText(tv.getText().toString() + ((Button)V).getText().toString());
+					}
 				}
 			}
 		}
