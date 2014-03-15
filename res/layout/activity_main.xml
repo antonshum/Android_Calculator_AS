@@ -137,4 +137,37 @@
         android:layout_centerHorizontal="true"
         android:text="=" />
 
+    <Button
+        android:id="@+id/button15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/button14"
+        android:layout_alignRight="@+id/button12"
+        android:text="-" />
+
+    <Button
+        android:id="@+id/button16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/button13"
+        android:layout_alignParentBottom="true"
+        android:text="*" />
+
+    <Button
+        android:id="@+id/button17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/button16"
+        android:layout_centerHorizontal="true"
+        android:text="/" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/button17"
+        android:layout_alignRight="@+id/button15"
+        android:layout_alignTop="@+id/button17"
+        android:text="4099053107" />
+
 </RelativeLayout>

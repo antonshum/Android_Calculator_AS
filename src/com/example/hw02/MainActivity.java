@@ -22,9 +22,14 @@ public class MainActivity extends Activity {
 	private Button btn12 =null;
 	private Button btn13 =null;
 	private Button btn14 =null;
+	private Button btn15 =null;
+	private Button btn16 =null;
+	private Button btn17 =null;
 	private TextView tv = null;
 	String string;
+	String lastString = null;
 	int temp;
+	float ftemp;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -44,6 +49,9 @@ public class MainActivity extends Activity {
 		btn12 = (Button) findViewById(R.id.button12);
 		btn13 = (Button) findViewById(R.id.button13); 
 		btn14 = (Button) findViewById(R.id.button14); 
+		btn15 = (Button) findViewById(R.id.button15);
+		btn16 = (Button) findViewById(R.id.button16); 
+		btn17 = (Button) findViewById(R.id.button17); 
 		btn1.setOnClickListener(bltisener);
 		btn2.setOnClickListener(bltisener);
 		btn3.setOnClickListener(bltisener);
@@ -58,6 +66,9 @@ public class MainActivity extends Activity {
 		btn12.setOnClickListener(bltisener);
 		btn13.setOnClickListener(bltisener);
 		btn14.setOnClickListener(bltisener);
+		btn15.setOnClickListener(bltisener);
+		btn16.setOnClickListener(bltisener);
+		btn17.setOnClickListener(bltisener);
 	}
 	
 	private Button.OnClickListener bltisener = new Button.OnClickListener(){
@@ -75,13 +86,49 @@ public class MainActivity extends Activity {
 				tv.setText("0");
 			}
 			else if(((Button)V).getText().toString().equals("+")) {
+				lastString = "+";
+				string = tv.getText().toString();
+				tv.setText("0");
+			}
+			else if(((Button)V).getText().toString().equals("-")) {
+				lastString = "-";
+				string = tv.getText().toString();
+				tv.setText("0");
+			}
+			else if(((Button)V).getText().toString().equals("*")) {
+				lastString = "*";
+				string = tv.getText().toString();
+				tv.setText("0");
+			}
+			else if(((Button)V).getText().toString().equals("/")) {
+				lastString = "/";
 				string = tv.getText().toString();
 				tv.setText("0");
 			}
 			else if(((Button)V).getText().toString().equals("=")) {
-				temp = Integer.parseInt(string) + Integer.parseInt(tv.getText().toString());
-				string = string.valueOf(temp);
-				tv.setText(string);
+				if(lastString.equals("+")) {
+					temp = Integer.parseInt(string) + Integer.parseInt(tv.getText().toString());
+					string = string.valueOf(temp);
+					tv.setText(string);
+				}
+				else if(lastString.equals("-"))	{
+					temp = Integer.parseInt(string) - Integer.parseInt(tv.getText().toString());
+					string = string.valueOf(temp);
+					tv.setText(string);
+				}
+				else if(lastString.equals("*"))	{
+					temp = Integer.parseInt(string) * Integer.parseInt(tv.getText().toString());
+					string = string.valueOf(temp);
+					tv.setText(string);
+				}
+				else if(lastString.equals("/"))	{
+					ftemp = (float)(Integer.parseInt(string)) / Integer.parseInt(tv.getText().toString());
+					string = string.valueOf(ftemp);
+					tv.setText(string);
+				}
+				else {								//direct use =
+					tv.setText("0");
+				}
 			}
 			else {
 				if(Integer.parseInt(tv.getText().toString())==0) {
