@@ -28,7 +28,7 @@ public class MainActivity extends Activity {
 	private TextView tv = null;
 	String string;
 	String lastString = null;
-	String calString = null;
+	String calString = "=";
 	int temp;
 	float ftemp;
 	@Override
@@ -104,30 +104,30 @@ public class MainActivity extends Activity {
 			}
 			else if(((Button)V).getText().toString().equals("=")) {
 				if(calString.equals("+")) {
-					calString = null;
+					calString = "=";
 					temp = Integer.parseInt(string) + Integer.parseInt(tv.getText().toString());
 					string = string.valueOf(temp);
 					tv.setText(string);
 				}
 				else if(calString.equals("-"))	{
-					calString = null;
+					calString = "=";
 					temp = Integer.parseInt(string) - Integer.parseInt(tv.getText().toString());
 					string = string.valueOf(temp);
 					tv.setText(string);
 				}
 				else if(calString.equals("*"))	{
-					calString = null;
+					calString = "=";
 					temp = Integer.parseInt(string) * Integer.parseInt(tv.getText().toString());
 					string = string.valueOf(temp);
 					tv.setText(string);
 				}
 				else if(calString.equals("/"))	{
-					calString = null;
+					calString = "=";
 					ftemp = (float)(Integer.parseInt(string)) / Integer.parseInt(tv.getText().toString());
 					string = string.valueOf(ftemp);
 					tv.setText(string);
 				}
-				else {								//direct use =
+				else if(calString.equals("=")) {								//direct use =
 					tv.setText("0");
 				}
 			}
